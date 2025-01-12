@@ -1,5 +1,4 @@
 const db = require('../db/queries');
-const { get } = require('../routes/indexRouter');
 
 exports.getAllCategories = async (req, res) => {
     const categories = await db.getAllCategories();
