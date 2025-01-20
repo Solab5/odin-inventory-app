@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= item.name %></title>
+</head>
+<body>
+    <%- include('../header') %>
+    <h1><%= item.name %></h1>
+    <p>Description: <%= item.description %></p>   
+    <p>Price: $<%= item.price %></p>
+    <p>Stock Quantity: <%= item.stock_quantity %></p>
+    <p>Unit Type: <%= item.unit_type %></p>
+    <a href="/items/<%= item.id %>/edit">Edit item</a>
+    <form action="/items/<%= item.id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Item</button>
+    </form> 
+
+    <a href="/items">Back to items</a>
+    <%- include('../footer') %>
+</body>
+</html>
