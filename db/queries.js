@@ -16,11 +16,15 @@ exports.addNewCategory = async(name, description) => {
     await pool.query("INSERT INTO categories (name, description) VALUES ($1, $2)", [name, description]);
 }
 
-exports.updateItem = async (id, name, description, price, stock_quantity, category_id, unit_type) => {
+exports.updateCategory = async (id, name, description) => {
     await pool.query(
-        "UPDATE items SET name = $1, description = $2, price = $3, stock_quantity = $4, category_id = $5, unit_type = $6 WHERE id = $7",
-        [name, description, price, stock_quantity, category_id, unit_type, id]
+        "UPDATE categories SET name = $1, description = $2 WHERE id = $3",
+        [name, description, id]
     )
+}
+
+exports.deleteCategory = async (id) => {
+    await pool.query("DELETE FROM categories WHERE id = $1", [id]);
 }
 
 
@@ -47,3 +51,9 @@ exports.deleteItem = async (id) => {
     await pool.query("DELETE FROM items WHERE id = $1", [id]);
 }
 
+exports.updateItem = async (id, name, description, price, stock_quantity, category_id, unit_type) => {
+    await pool.query(
+        "UPDATE items SET name = $1, description = $2, price = $3, stock_quantity = $4, category_id = $5, unit_type = $6 WHERE id = $7",
+        [name, description, price, stock_quantity, category_id, unit_type, id]
+    )
+}

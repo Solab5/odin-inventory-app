@@ -15,7 +15,7 @@ exports.categoryDetails = async  (req, res) => {
 }
 
 exports.createCategoryForm = (req, res) => {
-    res.render("categories/form", { title: "Create Category"});
+    res.render("categories/new", { title: "Create Category" });
 }
 
  
@@ -43,7 +43,7 @@ exports.updateCategory = async (req, res) => {
     const { id } = req.params;
     const { name, description } = req.body;
     await db.updateCategory(id, name, description);
-    res.redirect("/categories");
+    res.redirect(`/categories/${id}`);
 }
 
 exports.deleteCategory = async (req, res) => {

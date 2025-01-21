@@ -13,9 +13,9 @@ const {
 const categoriesRouter = Router();
 
 categoriesRouter.get("/", getAllCategories);
-categoriesRouter.get("/:id", categoryDetails)
 categoriesRouter.get("/new", createCategoryForm);
 categoriesRouter.post("/", addNewCategory);
+categoriesRouter.get("/:id", categoryDetails)
 categoriesRouter.get("/:id/edit", editCategoryForm);
 categoriesRouter.put("/:id", updateCategory);
 categoriesRouter.delete("/:id", deleteCategory);
