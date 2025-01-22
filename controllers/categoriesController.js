@@ -17,7 +17,11 @@ exports.categoryDetails = async (req, res) => {
         if (!category) {
             return res.status(404).send("Category not found")
         }
-        res.render("categories/show", {category: category});
+        const items = await db.getItemsByCategory(categoryId);
+        res.render("categories/show", {
+            category: category,
+            items: items
+        });
     } catch (error) {
         console.error("Error fetching category details:", error);
         res.status(500).send("Error loading category details");
@@ -82,3 +86,4 @@ exports.deleteCategory = async (req, res) => {
         res.status(500).send("Error deleting category");
     }
 }
+

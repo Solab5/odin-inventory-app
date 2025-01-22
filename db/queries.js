@@ -55,6 +55,18 @@ exports.deleteCategory = async (id) => {
     }
 }
 
+exports.getItemsByCategory = async (categoryId) => {
+    try {
+        const { rows } = await pool.query(
+            "SELECT * FROM items WHERE category_id = $1",
+            [categoryId]
+        );
+        return rows;
+    } catch (error) {
+        console.log(`Database error in getItemsByCategory for catgory ${categoryId}:`, error);
+    }
+}
+
 
 // Items
 // id name description price stock_quantity category_id unit_type created_at         |         updated_at 
@@ -70,7 +82,13 @@ exports.getAllItems = async() => {
 
 exports.getItemById = async (id) => {
     try {
-        const { rows } = await pool.query("SELECT * FROM items WHERE id = $1", [id]);
+        const { rows } = await pool.query(
+            `SELECT items.*, categories.name as category_name
+             FROM items 
+             JOIN categories ON items.category_id = categories.id
+             WHERE items.id = $1`, 
+             [id]
+        );
         return rows[0];
     } catch (error) {
         console.error(`Database error in getItemById for id ${id}:`, error);

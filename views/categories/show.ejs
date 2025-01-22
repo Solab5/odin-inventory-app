@@ -10,6 +10,21 @@
 
     <h1><%= category.name %></h1>
     <p>Description: <%= category.description %></p>
+    <h2>Items in this category:</h2>
+    <% if (items.length > 0) { %>
+        <ul>
+            <% items.forEach(item => { %>
+                <li>
+                    <a href="/items/<%= item.id %>"><%= item.name %></a>
+                    - Price: $<%= item.price %>
+                    - Stock: <%= item.stock_quantity %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else {%>
+        <p>No items in this category</p>
+    <% } %>
+
     <a href="/categories/<%= category.id %>/edit">Edit Category</a>
     <form action="/categories/<%= category.id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Category</button>

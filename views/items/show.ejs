@@ -12,6 +12,7 @@
     <p>Price: $<%= item.price %></p>
     <p>Stock Quantity: <%= item.stock_quantity %></p>
     <p>Unit Type: <%= item.unit_type %></p>
+    <p>Category: <a href="/categories/<%= item.category_id %>"><%= item.category_name %></a></p>
     <a href="/items/<%= item.id %>/edit">Edit item</a>
     <form action="/items/<%= item.id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Item</button>
