@@ -45,7 +45,8 @@ const SQL = `
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: "postgresql://rtv-lpt-127:rtv-lpt-127@localhost:5432/grocery_db",
+    connectionString: "postgresql://postgres:YnqnGeLznxdkBaBJVLAThfBijEPshFCN@roundhouse.proxy.rlwy.net:45221/railway",
+    // connectionString: "postgresql://rtv-lpt-127:rtv-lpt-127@localhost:5432/grocery_db",
   });
   await client.connect();
   await client.query(SQL);
