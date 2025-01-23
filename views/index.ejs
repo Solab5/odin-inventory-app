@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title><%= title %></title>
 </head>
 <body>
     <%- include('header') %>
     
-    <h1><%= title %></h1>
-    <p>Welcome to the inventory system</p>
+    <div class="container">
+        <h1><i class="fas fa-warehouse"></i> <%= title %></h1>
+        <div class="card">
+            <p>Welcome to the inventory system</p>
+            <div class="actions">
+                <a href="/items" class="btn btn-primary"><i class="fas fa-box"></i> View Items</a>
+                <a href="/categories" class="btn btn-primary"><i class="fas fa-tags"></i> View Categories</a>
+            </div>
+        </div>
+    </div>
     
     <%- include('footer') %>
 </body>

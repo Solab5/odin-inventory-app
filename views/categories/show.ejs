@@ -8,28 +8,46 @@
 <body>
     <%- include('../header') %>
 
-    <h1><%= category.name %></h1>
-    <p>Description: <%= category.description %></p>
-    <h2>Items in this category:</h2>
-    <% if (items.length > 0) { %>
-        <ul>
-            <% items.forEach(item => { %>
-                <li>
-                    <a href="/items/<%= item.id %>"><%= item.name %></a>
-                    - Price: $<%= item.price %>
-                    - Stock: <%= item.stock_quantity %>
-                </li>
-            <% }) %>
-        </ul>
-    <% } else {%>
-        <p>No items in this category</p>
-    <% } %>
+    <div class="container">
+        <div class="details">
+            <h1><i class="fas fa-tag"></i> <%= category.name %></h1>
+            <p><i class="fas fa-align-left"></i> <strong>Description:</strong> <%= category.description %></p>
+            
+            <h2><i class="fas fa-boxes"></i> Items in this category:</h2>
+            <% if (items.length > 0) { %>
+                <ul class="list">
+                    <% items.forEach(item => { %>
+                        <li class="list-item">
+                            <a href="/items/<%= item.id %>">
+                                <i class="fas fa-box"></i> <%= item.name %>
+                            </a>
+                            <span>
+                                <i class="fas fa-tag"></i> $<%= item.price %>
+                                <i class="fas fa-cubes"></i> <%= item.stock_quantity %>
+                            </span>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else {%>
+                <p class="empty-message"><i class="fas fa-info-circle"></i> No items in this category</p>
+            <% } %>
 
-    <a href="/categories/<%= category.id %>/edit">Edit Category</a>
-    <form action="/categories/<%= category.id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Category</button>
-    </form>
-    <a href="/categories">Back to Categories</a>
+            <div class="actions">
+                <a href="/categories/<%= category.id %>/edit" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Edit Category
+                </a>
+                <form action="/categories/<%= category.id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Delete Category
+                    </button>
+                </form>
+                <a href="/categories" class="btn">
+                    <i class="fas fa-arrow-left"></i> Back to Categories
+                </a>
+            </div>
+        </div>
+    </div>
+    
     <%- include('../footer') %>
 </body>
 </html>

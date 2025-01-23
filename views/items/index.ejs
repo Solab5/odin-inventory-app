@@ -8,15 +8,20 @@
 <body>
     <%- include('../header') %>
     
-    <h1><%= title %></h1>
-    <ul>
-        <% items.forEach((item) => { %>
-            <li>
-                <a href="/items/<%= item.id %>"><%= item.name %></a>
-            </li>
-        <% }) %>
-    </ul>
-    <a href="/items/new">Add New Item</a>
+    <div class="container">
+        <h1><i class="fas fa-boxes"></i> <%= title %></h1>
+        <a href="/items/new" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Item</a>
+        
+        <ul class="list">
+            <% items.forEach((item) => { %>
+                <li class="list-item">
+                    <a href="/items/<%= item.id %>">
+                        <i class="fas fa-box"></i> <%= item.name %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
     
     <%- include('../footer') %>
 </body>

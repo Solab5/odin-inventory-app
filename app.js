@@ -13,6 +13,6 @@ app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/categories', categoriesRouter);
 app.use('/items', itemsRouter);
-
+app.use(express.static('public'));
 
 app.listen(PORT, console.log(`My app running on port: ${PORT}`));
